@@ -29,8 +29,8 @@ Spaceemotion\LaravelSparkPostOptions\SparkPostConfigProvider::class,
 
 You can either attach the mail header directly:
 ```php
-$mailable->withSwiftMessage(function (Swift_Message $message) use ($options) {
-    $message->getHeaders()->addTextHeader(SparkpostConfigTransport::CONFIG_HEADER, json_encode([
+$mailable->withSwiftMessage(function ($message) use ($options) {
+    $message->getHeaders()->addTextHeader(SparkPostConfigProvider::CONFIG_HEADER, json_encode([
         // Your options here...
     ]));
 });
@@ -39,7 +39,7 @@ $mailable->withSwiftMessage(function (Swift_Message $message) use ($options) {
 or via the integrated `attach` method:
 
 ```php
-SparkpostConfigTransport::attach($mailable, [
+ConfigurableTransport::attach($mailable, [
     // Your options here...
 ]);
 ```

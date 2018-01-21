@@ -10,6 +10,11 @@ use Illuminate\Support\ServiceProvider;
 class SparkPostConfigProvider extends ServiceProvider
 {
     /**
+     * The header used by SparkPost to set the transaction options
+     */
+    const CONFIG_HEADER = 'X-MSYS-API';
+
+    /**
      * Extends the transport manager with our configurable transport
      *
      * @return void
@@ -27,7 +32,13 @@ class SparkPostConfigProvider extends ServiceProvider
                 ));
 
                 // Return our transport extension instead
-                return new SparkpostConfigTransport(
+                if (!starts_with($app::VERSION, '5.5')) {
+                    $class = SparkpostConfigLegacyTransport::class;
+                } else {
+                    $class = SparkpostConfigTransport::class;
+                }
+
+                return new $class(
                     $guzzle,
                     $config['secret'],
                     Arr::get($config, 'options', [])
