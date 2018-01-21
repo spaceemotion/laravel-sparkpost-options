@@ -19,6 +19,12 @@ Via Composer
 $ composer require spaceemotion/laravel-sparkpost-options
 ```
 
+**5.4 and below:** Add the ServiceProvider to your `app.php`: 
+
+```php
+Spaceemotion\LaravelSparkPostOptions\SparkPostConfigProvider::class,
+```
+
 ## Usage
 
 You can either attach the mail header directly:
