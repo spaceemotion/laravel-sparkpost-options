@@ -1,0 +1,38 @@
+{
+    "name": "spaceemotion/laravel-sparkpost-options",
+    "type": "library",
+    "description": "Adds support for adding SparkPost options via the X-MSYS-API header, even when using the API implementation",
+    "keywords": [
+        "laravel",
+        "mailer",
+        "sparkpost"
+    ],
+    "homepage": "https://github.com/spaceemotion/laravel-sparkpost-options",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "spaceemotion",
+            "email": "hello@spaceemotion.net"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.2",
+        "illuminate/mail": "^5.1",
+        "php" : "~5.6|~7.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Spaceemotion\\LaravelSparkPostOptions\\": "src"
+        }
+    },
+    "scripts": {
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
