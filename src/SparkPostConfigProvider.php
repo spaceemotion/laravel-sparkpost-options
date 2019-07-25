@@ -32,7 +32,7 @@ class SparkPostConfigProvider extends ServiceProvider
                 ));
 
                 // Return our transport extension instead
-                if (!starts_with($app::VERSION, '5.5')) {
+                if (version_compare($app::VERSION, '5.5') < 0) {
                     $class = SparkpostConfigLegacyTransport::class;
                 } else {
                     $class = SparkpostConfigTransport::class;
